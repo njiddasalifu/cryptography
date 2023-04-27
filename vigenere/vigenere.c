@@ -2,4 +2,7 @@
 // caeser algorithm:  For any plaintext letter 'a', substitue
 // the ciphertext letter 'B' ~
 // formular B = E(a, k)mod26 = (a + k)mod26
-// k =  key (k= 3 always)
+// k =  key (k= 3 always) and a= plaintext
+
+//c program to implement the caeset cipher
+#include<stdio.h>

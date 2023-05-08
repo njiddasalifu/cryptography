@@ -1,36 +1,117 @@
-//columnar transposition is transposition cypher technique
-
 #include<stdio.h>
-char Key = "";
-map<int,int> KeyMap;
+#include<string.h>
+void cipher(int i, int c);
+int findMin();
+char makeArray(int, int);
 
-void setPermutationOrder(){
-    //adding the permutation order
-    for(int i=0;i<Key.length();i++){
-        KeyMap[Key[i]] = i;
-    }
-}
+char arr[20][20], darr[20][20], emessage[100], retmessage[100],key[60];
+char temp1[50], temp2[50];
+int k=0;
 
-//encryption function
+int main() {
+    char *message, *demessage;
 
-String encryptMessage(String msg){
-    int row,col,j;
-    String cipher = "";
+    int i, j,klen,emlen,flag=0;
+    int r,c,index,min,rows;
+    clrscr();  //clearing the string
 
-    col = Key.length();
-    row = msg.length()%col;
+    //getting the message to encrypt
+    printf("Enter the message you want to cipher:\n");
+    fflush(stdin);
+    gets(message);
 
-    if(msg.length() % col)
-    row++;
+    //taking the key to use for encrypt and decript
+    printf("Enetr the key\n");
+    fflush(stdin);
+    gets(key);
 
-    char matrix[row][col];
+    strcpy(temp1, key);
+    klen = strlen(key);
+    
+    k=0;
+    for (int i = 0; ;i++){
+        if(flag == 1)
+        break;
 
-    for(int i=0;k=0; i<row;i++){
-        for(int j=0; j<col){
-            if(msg[k] == '\0'){
-                matrix[i][j] = '_';
-                j++;
+        for(j=0;key[j]!=NULL;j++){
+            if (message[k]==NULL){
+                flag=1;
+                arr[i][j] = '-';
+            }else {
+                arr[i][j] = message[k++];
             }
+            
         }
     }
+    r=i; //r=rpw and c=column
+    c=j; 
+
+    for(i=0;j<c;j++){
+        for(j=0;j<c;j++){
+            printf("%c ", arr[i][j]);
+        }
+        printf('\n');
+    }
+
+    k=0;
+    for(i=0;i<klen;i++){
+        index = findMin();
+        cipher(index, r);
+    }
+
+    emessage[k]='\0';
+    printf("\nEncrypted message is\n");
+    for(i=0;emessage[i]!=NULL;i++);
+    printf("%c ",emessage[i]);
+
+    emlen = strlen(emessage);
+    strcpy(temp1, key);
+    rows = emlen/klen;
+    rows; j=0;
+
+    for ( i=0,k=1;emessage[i]!=NULL;i++,j++){
+        temp2[j++]=emessage[i];
+        if((k%rows)==0){
+           temp2[j]='\0';
+           index=findMin();
+           makeArray(index,rows);
+           j=0; 
+        }
+    }
+
+    printf("\nArray Retrieved is\n");
+
+     k=0;
+     for(i=0;i<r;i++)
+     {
+    for(j=0;j<c;j++)
+    {
+    printf("%c ",darr[i][j]);
+    retmessage[k++]=darr[i][j];
+
+    }
+    printf("\n");
+     }
+       retmessage[k]='\0';
+
+    printf("\nMessage retrieved is\n");
+
+     for(i=0;retmessage[i]!=NULL;i++)
+     printf("%c",retmessage[i]);
+    getch();
+  return(0);
+}
+
+//the cipher method implementation
+void cipher(int i,int r)
+{
+  int j;
+  for(j=0;j<r;j++)
+  {
+    {
+    emessage[k++]=arr[j][i];
+    }
+  }
+
+
 }

@@ -2,7 +2,7 @@
 #include<string.h>
 void cipher(int i, int c);
 int findMin();
-char makeArray(int, int);
+void makeArray(int, int);
 
 char arr[20][20], darr[20][20], emessage[100], retmessage[100],key[60];
 char temp1[50], temp2[50];
@@ -112,6 +112,32 @@ void cipher(int i,int r)
     emessage[k++]=arr[j][i];
     }
   }
+}
 
+void makeArray(int col,int row)
+{
+ int i,j;
 
+    for(i=0;i<row;i++)
+       {
+       darr[i][col]=temp2[i];
+       }
+}
+int findMin()
+{
+  int i,j,min,index;
+
+       min=temp[0];
+       index=0;
+       for(j=0;temp[j]!=NULL;j++)
+       {
+    if(temp[j]<min)
+      {
+      min=temp[j];
+      index=j;
+      }
+       }
+
+      temp[index]=123;
+       return(index);
 }

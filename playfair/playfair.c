@@ -164,7 +164,7 @@ int main() {
     
     printf("Enter 1 to encrypt or 2 to decrypt: ");
     scanf("%d", &choice);
-    getchar(); // Consume newline character
+    getchar(); // geting newline character
     
     printf("Enter the text: ");
     if (choice == 1) {

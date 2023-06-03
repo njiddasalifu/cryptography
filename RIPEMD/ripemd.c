@@ -14,6 +14,7 @@ int main() {
   fgets(input, MAX_INPUT_LENGTH, stdin);
   input[strcspn(input, "\n")] = 0; // Remove trailing newline from input
 
+//THE RIPEMD160 FUNCTION CALL FROM OPENSSL LIBRARY
   RIPEMD160(input, strlen(input), output);
 
   printf("RIPEMD-160 hash of '%s': ", input);
